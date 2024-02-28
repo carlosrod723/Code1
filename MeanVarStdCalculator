@@ -1,0 +1,48 @@
+import numpy as np
+
+def calculate(matrix):
+    # Calculate statistics for axis 0
+    mean_axis0 = np.mean(matrix, axis=0)
+    variance_axis0 = np.var(matrix, axis=0)
+    std_dev_axis0 = np.std(matrix, axis=0)
+    max_val_axis0 = np.max(matrix, axis=0)
+    min_val_axis0 = np.min(matrix, axis=0)
+    sum_axis0 = np.sum(matrix, axis=0)
+
+    # Calculate statistics for axis 1
+    mean_axis1 = np.mean(matrix, axis=1)
+    variance_axis1 = np.var(matrix, axis=1)
+    std_dev_axis1 = np.std(matrix, axis=1)
+    max_val_axis1 = np.max(matrix, axis=1)
+    min_val_axis1 = np.min(matrix, axis=1)
+    sum_axis1 = np.sum(matrix, axis=1)
+
+    # Flatten the matrix 
+    flattened_matrix = matrix.flatten() 
+    
+    # Calculate statistics for the flattened matrix
+    mean_flattened = np.mean(flattened_matrix)
+    variance_flattened = np.var(flattened_matrix)
+    std_dev_flattened = np.std(flattened_matrix)
+    max_val_flattened = np.max(flattened_matrix)
+    min_val_flattened = np.min(flattened_matrix)
+    sum_flattened = np.sum(flattened_matrix)
+
+    # Return results in the specified format
+    return {
+        'mean': [mean_axis0.tolist(), mean_axis1.tolist(), mean_flattened],
+        'variance': [variance_axis0.tolist(), variance_axis1.tolist(), variance_flattened],
+        'standard deviation': [std_dev_axis0.tolist(), std_dev_axis1.tolist(), std_dev_flattened],
+        'max': [max_val_axis0.tolist(), max_val_axis1.tolist(), max_val_flattened],
+        'min': [min_val_axis0.tolist(), min_val_axis1.tolist(), min_val_flattened],
+        'sum': [sum_axis0.tolist(), sum_axis1.tolist(), sum_flattened]
+    }
+
+# Define the matrix
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+
+# Calculate statistics
+result = calculate(matrix)
+print(result)
